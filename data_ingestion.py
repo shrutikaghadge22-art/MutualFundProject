@@ -15,5 +15,4 @@ df.to_sql(
     index=False
 )
 
-print("Data loaded successfully into SQLite database!")
-print("Rows loaded:", len(df))
+print("Data loaded successfully into SQLite database")
