@@ -22,7 +22,8 @@ CREATE TABLE fact_transactions (
 
 CREATE TABLE fact_performance (
     amfi_code TEXT,
-    returns_1y REAL,
-    returns_3y REAL,
-    sharpe_ratio REAL
+    returns_1y_pct REAL,
+    returns_3y_pct REAL,
+    returns_5y_pct REAL,
+    FOREIGN KEY (amfi_code) REFERENCES dim_fund(amfi_code)
 );

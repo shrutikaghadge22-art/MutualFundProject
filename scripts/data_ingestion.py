@@ -1,16 +1,36 @@
 import pandas as pd
+from sqlalchemy import create_engine
 
 print("Data Ingestion Started")
 
-sample_data = {
-    "Scheme_Code": [125497, 119551, 120503],
-    "Fund_Name": ["HDFC Top 100", "SBI Bluechip", "ICICI Bluechip"]
-}
+# SQLite database connection
+engine = create_engine("sqlite:///data/db/bluestock_mf.db")
 
-df = pd.DataFrame(sample_data)
+# Load cleaned files
+nav_df = pd.read_csv("data/processed/nav_history_cleaned.csv")
+trans_df = pd.read_csv("data/processed/clean_transactions.csv")
+perf_df = pd.read_csv("data/processed/clean_performance.csv")
 
-print(df)
-print(df.shape)
-print(df.dtypes)
+# Load into SQLite
+nav_df.to_sql(
+    "fact_nav",
+    con=engine,
+    if_exists="replace",
+    index=False
+)
 
-print("Data Ingestion Completed")
+trans_df.to_sql(
+    "fact_transactions",
+    con=engine,
+    if_exists="replace",
+    index=False
+)
+
+perf_df.to_sql(
+    "fact_performance",
+    con=engine,
+    if_exists="replace",
+    index=False
+)
+
+print("Data loaded successfully into SQLite database")
