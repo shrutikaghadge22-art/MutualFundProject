@@ -1,3 +1,9 @@
+"""
+Data Ingestion Script
+
+This script loads cleaned mutual fund data
+into the SQLite database.
+"""
 import pandas as pd
 from sqlalchemy import create_engine
 
