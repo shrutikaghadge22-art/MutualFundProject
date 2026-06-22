@@ -1,18 +1,43 @@
-import pandas as pd
+from loader import normalize_year, normalize_ticker
 
-def normalize_year(year):
-    year = str(year).strip()
-    return year.upper()
+# normalize_year tests
+assert normalize_year("2021") == "2021"
+assert normalize_year(" 2021 ") == "2021"
+assert normalize_year("mar 2021") == "MAR 2021"
+assert normalize_year("Mar 2021") == "MAR 2021"
+assert normalize_year("APR 2022") == "APR 2022"
+assert normalize_year("fy2020") == "FY2020"
+assert normalize_year("fy2021") == "FY2021"
+assert normalize_year("2022 ") == "2022"
+assert normalize_year(" 2023") == "2023"
+assert normalize_year("q1 2024") == "Q1 2024"
+assert normalize_year("q2 2024") == "Q2 2024"
+assert normalize_year("q3 2024") == "Q3 2024"
+assert normalize_year("q4 2024") == "Q4 2024"
+assert normalize_year("jan 2020") == "JAN 2020"
+assert normalize_year("dec 2025") == "DEC 2025"
+assert normalize_year("test") == "TEST"
+assert normalize_year("abc") == "ABC"
+assert normalize_year("xyz") == "XYZ"
 
-def normalize_ticker(ticker):
-    ticker = str(ticker).strip()
-    return ticker.upper()
+# normalize_ticker tests
+assert normalize_ticker("tcs") == "TCS"
+assert normalize_ticker("infy") == "INFY"
+assert normalize_ticker("hdfc") == "HDFC"
+assert normalize_ticker("reliance") == "RELIANCE"
+assert normalize_ticker("sbin") == "SBIN"
+assert normalize_ticker("itc") == "ITC"
+assert normalize_ticker("lt") == "LT"
+assert normalize_ticker("asianpaint") == "ASIANPAINT"
+assert normalize_ticker("wipro") == "WIPRO"
+assert normalize_ticker("techm") == "TECHM"
+assert normalize_ticker(" tata ") == "TATA"
+assert normalize_ticker(" axis ") == "AXIS"
+assert normalize_ticker("kotak") == "KOTAK"
+assert normalize_ticker("ongc") == "ONGC"
+assert normalize_ticker("bpcl") == "BPCL"
+assert normalize_ticker("ioc") == "IOC"
+assert normalize_ticker("ntpc") == "NTPC"
+assert normalize_ticker("ultratech") == "ULTRATECH"
 
-print("Pandas version:", pd.__version__)
-print("Excel Loader Ready")
-
-print(normalize_year("Mar 2021"))
-print(normalize_ticker("tcs"))
-
-df = pd.read_excel("Data/analysis.xlsx")
-print(df.head())
+print("All 36 tests passed!")
