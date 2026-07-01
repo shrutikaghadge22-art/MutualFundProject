@@ -31,3 +31,33 @@ def return_on_assets(net_profit, total_assets):
 
 
 print("Profitability ratios module loaded successfully!")
+# -----------------------------
+# Day 9 - Leverage & Efficiency Ratios
+# -----------------------------
+
+def debt_to_equity(borrowings, equity, reserves):
+    capital = equity + reserves
+    if borrowings == 0:
+        return 0
+    if capital <= 0:
+        return None
+    return borrowings / capital
+
+
+def interest_coverage(operating_profit, other_income, interest):
+    if interest == 0:
+        return None
+    return (operating_profit + other_income) / interest
+
+
+def net_debt(borrowings, investments):
+    return borrowings - investments
+
+
+def asset_turnover(sales, total_assets):
+    if total_assets == 0:
+        return None
+    return sales / total_assets
+
+
+print("Leverage & Efficiency ratios loaded successfully!")
