@@ -111,3 +111,15 @@ def fcf_conversion_rate(fcf, operating_profit):
 
 
 print("Cash Flow KPI module loaded successfully!")
+def composite_quality_score(roe, cfo_quality, fcf_conversion):
+    """Calculate Composite Quality Score."""
+    values = [roe, cfo_quality, fcf_conversion]
+
+    valid = [v for v in values if v is not None]
+
+    if len(valid) == 0:
+        return None
+
+    return sum(valid) / len(valid)
+print("Composite Quality Score module loaded successfully!")
+
