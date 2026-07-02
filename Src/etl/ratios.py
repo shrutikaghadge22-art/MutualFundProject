@@ -84,3 +84,30 @@ def calculate_cagr(start, end, years):
 
     return None
 print("CAGR Engine loaded successfully!")
+def free_cash_flow(operating_activity, investing_activity):
+    """Calculate Free Cash Flow."""
+    return operating_activity + investing_activity
+
+
+def cfo_quality_score(cfo, pat):
+    """Calculate CFO Quality Score."""
+    if pat == 0:
+        return None
+    return cfo / pat
+
+
+def capex_intensity(investing_activity, sales):
+    """Calculate CapEx Intensity."""
+    if sales == 0:
+        return None
+    return abs(investing_activity) / sales * 100
+
+
+def fcf_conversion_rate(fcf, operating_profit):
+    """Calculate FCF Conversion Rate."""
+    if operating_profit == 0:
+        return None
+    return (fcf / operating_profit) * 100
+
+
+print("Cash Flow KPI module loaded successfully!")
