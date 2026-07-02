@@ -196,5 +196,26 @@ def investment_score(quality_score, health_score, valuation_score):
 
 
 print("Investment Score module loaded successfully!")
+def rating_from_score(score):
+    """
+    Convert investment score into a rating.
+    """
+
+    if score is None:
+        return "N/A"
+    elif score >= 80:
+        return "Strong Buy"
+    elif score >= 60:
+        return "Buy"
+    elif score >= 40:
+        return "Hold"
+    elif score >= 20:
+        return "Sell"
+    else:
+        return "Strong Sell"
+
+
+print("Investment Rating module loaded successfully!")
+
 
 
