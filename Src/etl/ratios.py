@@ -122,4 +122,40 @@ def composite_quality_score(roe, cfo_quality, fcf_conversion):
 
     return sum(valid) / len(valid)
 print("Composite Quality Score module loaded successfully!")
+def financial_health_score(
+    roe,
+    roce,
+    roa,
+    debt_to_equity,
+    interest_coverage,
+):
+    """
+    Calculate Financial Health Score.
+    """
+
+    scores = []
+
+    if roe is not None:
+        scores.append(roe)
+
+    if roce is not None:
+        scores.append(roce)
+
+    if roa is not None:
+        scores.append(roa)
+
+    if debt_to_equity is not None:
+        scores.append(max(0, 100 - debt_to_equity * 20))
+
+    if interest_coverage is not None:
+        scores.append(min(interest_coverage * 10, 100))
+
+    if len(scores) == 0:
+        return None
+
+    return sum(scores) / len(scores)
+
+
+print("Financial Health Score module loaded successfully!")
+
 
