@@ -157,5 +157,29 @@ def financial_health_score(
 
 
 print("Financial Health Score module loaded successfully!")
+def valuation_score(pe, pb, roe):
+    """
+    Calculate Valuation Score.
+    Lower PE/PB and higher ROE get better score.
+    """
+
+    scores = []
+
+    if pe is not None and pe > 0:
+        scores.append(max(0, 100 - pe))
+
+    if pb is not None and pb > 0:
+        scores.append(max(0, 100 - (pb * 10)))
+
+    if roe is not None:
+        scores.append(min(roe, 100))
+
+    if len(scores) == 0:
+        return None
+
+    return sum(scores) / len(scores)
+
+
+print("Valuation Score module loaded successfully!")
 
 
