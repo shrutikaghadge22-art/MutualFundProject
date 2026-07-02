@@ -216,6 +216,26 @@ def rating_from_score(score):
 
 
 print("Investment Rating module loaded successfully!")
+def recommendation(score):
+    """Return investment recommendation."""
+
+    if score is None:
+        return "No Data"
+
+    if score >= 80:
+        return "Strong Buy"
+    elif score >= 60:
+        return "Buy"
+    elif score >= 40:
+        return "Hold"
+    elif score >= 20:
+        return "Sell"
+    else:
+        return "Strong Sell"
+
+
+print("Recommendation module loaded successfully!")
+
 
 
 
