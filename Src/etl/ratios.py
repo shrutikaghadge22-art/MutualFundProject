@@ -181,5 +181,20 @@ def valuation_score(pe, pb, roe):
 
 
 print("Valuation Score module loaded successfully!")
+def investment_score(quality_score, health_score, valuation_score):
+    """
+    Calculate Overall Investment Score.
+    """
+
+    values = [quality_score, health_score, valuation_score]
+    valid = [v for v in values if v is not None]
+
+    if len(valid) == 0:
+        return None
+
+    return sum(valid) / len(valid)
+
+
+print("Investment Score module loaded successfully!")
 
 
